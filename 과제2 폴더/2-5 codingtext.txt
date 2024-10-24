@@ -1,0 +1,21 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(vector<vector<int>> board, int k) {
+    int answer = 0;
+    
+    int iSize = board.size();
+    int jSize = board[0].size();
+    
+    for(int i=0;i<iSize;i++)
+    {
+        for(int j=0;i+j<=k && j < jSize;j++)
+        {
+            answer += board[i][j];
+        }
+    }
+    
+    return answer;
+}

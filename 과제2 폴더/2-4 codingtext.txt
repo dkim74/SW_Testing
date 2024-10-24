@@ -1,0 +1,40 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(int a, int b) {
+    int answer = 0;
+    
+    string str1, str2;
+    int oper1 = a, oper2 = b, strSize1 = 0, strSize2 = 0;
+    
+    str1 = to_string(a);
+    str2 = to_string(b);
+    strSize1 = str1.size();
+    strSize2 = str2.size();
+    
+    for(int i = 0; i< strSize2; i++)
+    {
+        oper1 *= 10;
+    }
+    
+    oper1 += b;
+    
+    for(int i=0;i<strSize1; i++)
+    {
+        oper2 *=10;
+    }
+    oper2 += a;
+    
+    if(oper1 >= oper2)
+    {
+        answer = oper1;
+    }
+    else
+    {
+        answer = oper2;
+    }
+    
+    return answer;
+}

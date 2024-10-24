@@ -1,0 +1,18 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(string my_string, string is_prefix) {
+    int answer = 0;
+    
+    int nPxLth = is_prefix.length();
+    
+    string strSub = my_string.substr(0,nPxLth);
+    if(is_prefix.compare(strSub) == 0)
+    {
+        answer = 1;
+    }
+    
+    return answer;
+}

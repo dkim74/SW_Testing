@@ -1,0 +1,49 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(string s) {
+    int answer = 0;
+    
+    string strTemp;
+    int sum = 0, numPrev = 0;
+    int strLength, spacePos = 0, spacePosPrev = -1;
+    strLength = s.length();
+    
+    for(int i = 0;i < strLength; i = spacePos)
+    {
+        spacePos = s.find(" ",spacePosPrev+1);
+        if(spacePos == string::npos)
+        {
+            strTemp = s.substr(spacePosPrev + 1, strLength - spacePosPrev - 1);
+            if(strTemp != "Z")
+            {
+                numPrev = stoi(strTemp);
+                sum += numPrev;
+            }
+            else
+            {
+                sum -= numPrev;
+            }
+            break;
+        }
+        
+        strTemp = s.substr(spacePosPrev + 1, spacePos - spacePosPrev - 1);
+        if(strTemp != "Z")
+        {
+            numPrev = stoi(strTemp);
+            sum += numPrev;
+        }
+        else
+        {
+            sum -= numPrev;
+        }
+        
+        spacePosPrev = spacePos;
+    }
+    
+    answer = sum;
+    
+    return answer;
+}
